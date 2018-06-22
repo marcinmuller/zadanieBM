@@ -6,7 +6,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Set;
 
 @Entity
 @Setter
@@ -23,13 +22,5 @@ public class AppUser {
     private LocalDate deletion;
     @JsonIgnore
     private String password;
-
-//    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    @JoinTable(
-//            name="USER_ROLES",
-//            joinColumns ={@JoinColumn(name = "USER_ID",referencedColumnName = "ID")},
-//            inverseJoinColumns = {@JoinColumn(name = "ROLE_ID", referencedColumnName = "ID")}
-//    )
-//    private Set<Role> roles;
     private String role;
 }

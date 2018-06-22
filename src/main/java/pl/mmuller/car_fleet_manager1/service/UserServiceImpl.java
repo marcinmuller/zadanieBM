@@ -1,10 +1,7 @@
 package pl.mmuller.car_fleet_manager1.service;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -36,9 +33,6 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 
     private Set<SimpleGrantedAuthority> getAuthority(AppUser user) {
         Set<SimpleGrantedAuthority> authorities = new HashSet<>();
-//        user.getRoles().forEach(role -> {
-//            authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getName()));
-//        });
         authorities.add(new SimpleGrantedAuthority("ROLE_"+user.getRole()));
         return authorities;
     }
