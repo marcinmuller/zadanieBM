@@ -28,9 +28,38 @@ public class Controller {
         return userService.findAll();
     }
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
-    @GetMapping("/user/{id}")
-    public AppUser getOne(@PathVariable(value = "id") Long id){
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/id/{id}")
+    public AppUser findUserById(@PathVariable("id") Long id){
         return userService.findById(id);
     }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/name/{name}")
+    public AppUser findUserByName(@PathVariable("name") String name){
+        return userService.findByName(name);
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @DeleteMapping("/delete/{id}")
+    public AppUser softDeleteUser(@PathVariable("id") Long id){
+        return userService.softDelete(id);
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @PutMapping("/update")
+    public AppUser updateUser(@RequestBody AppUserDto user){
+        return userService.update(user);
+    }
+
+
+
+
+
+//    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+//    @GetMapping("/user/{id}")
+//    public AppUser getOne(@PathVariable(value = "id") Long id){
+//        return userService.findById(id);
+//    }
 }
+

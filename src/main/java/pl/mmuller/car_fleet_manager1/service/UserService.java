@@ -8,9 +8,11 @@ import java.util.List;
 
 
 public interface UserService {
-    AppUser save(AppUserDto user);
+//    void delete(long id);
     List<AppUser> findAll();
-    void delete(long id);
-    AppUser findOne(String username);
     AppUser findById(Long id);
+    AppUser findByName(String name);
+    AppUser save(AppUserDto user);
+    AppUser softDelete(Long id);
+    AppUser update(AppUserDto user);
 }

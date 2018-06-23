@@ -8,7 +8,9 @@ import java.time.LocalDate;
 @Setter
 @Getter
 public class AppUserDto {
+    private long id;
     private String name;
+    private String firstName;
     private String surname;
     private String email;
     private LocalDate creation;
