@@ -34,8 +34,7 @@ public class Car {
     @OneToMany(
             targetEntity = Ride.class,
             mappedBy = "car",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER
+            cascade = CascadeType.ALL
     )
     public Set<Ride> rides=new HashSet<>();
 }
