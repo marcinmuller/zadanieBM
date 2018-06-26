@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import pl.mmuller.car_fleet_manager1.config.TokenProvider;
 import pl.mmuller.car_fleet_manager1.model.AuthToken;
 import pl.mmuller.car_fleet_manager1.model.LoginUser;
-import pl.mmuller.car_fleet_manager1.service.UserService;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -21,8 +20,6 @@ public class AuthenticationController {
     private AuthenticationManager authenticationManager;
     @Autowired
     private TokenProvider jwtTokenUtil;
-    @Autowired
-    private UserService userService;
 
     @PostMapping("/generate")
     public ResponseEntity<?> register(@RequestBody LoginUser loginUser) throws AuthenticationException {

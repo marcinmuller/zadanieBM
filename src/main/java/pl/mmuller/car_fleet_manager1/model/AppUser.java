@@ -3,11 +3,11 @@ package pl.mmuller.car_fleet_manager1.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -17,8 +17,6 @@ public class AppUser {
     @Id
     @GeneratedValue
     private long id;
-    @NotNull
-    @UniqueElements
     private String name;
     private String firstName;
     private String surname;
@@ -27,8 +25,19 @@ public class AppUser {
     private LocalDate modification;
     private LocalDate deletion;
     @JsonIgnore
-    @NotNull
     private String password;
-    @NotNull
     private String role;
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "users")
+    public Set<Car> cars=new HashSet<>();
+
+    @JsonIgnore
+    @OneToMany
+            (
+            targetEntity = Ride.class,
+            mappedBy = "user",
+            cascade = CascadeType.ALL//,
+    )
+    private Set<Ride> rides=new HashSet<>();
 }
